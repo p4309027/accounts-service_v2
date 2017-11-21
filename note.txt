@@ -1,0 +1,7 @@
+npm run build
+npm start
+git push origin accounts-service_v2 (push the changes to branch "accounts-service_v2")
+npm run build:prod
+
+to check the heroku log:
+heroku logs -t

@@ -1,0 +1,19 @@
+<div class="container">
+    <app-as-header></app-as-header>
+    <button class="btn btn-danger" *ngIf="!notLoggedIn()" id="logout" (click)="onLogout()">Logout</button>
+    <ul class="nav nav-tabs" *ngIf="notLoggedIn()">
+        <li class="nav-item" ><a class="nav-link" routerLinkActive="active" [routerLink]="['login']">Login</a></li>
+        <li class="nav-item" ><a class="nav-link" routerLinkActive="active" [routerLink]="['register']">Register</a></li>
+    </ul>
+    <ul class="nav nav-tabs" *ngIf="roleIs()">
+        <li class="nav-item" *ngIf="loggedIn()"><a class="nav-link" routerLinkActive="active" [routerLink]="['user-profile']">User Profile</a></li>
+        <li class="nav-item" *ngIf="loggedIn()"><a class="nav-link" routerLinkActive="active" [routerLink]="['user-address']">Addresses</a></li>
+    </ul>
+    <ul class="nav nav-tabs" *ngIf="!roleIs()">
+        <li class="nav-item" *ngIf="loggedIn()"><a class="nav-link" routerLinkActive="active" [routerLink]="['staff']">Staff member</a></li>
+    </ul>
+    
+    <br>
+    <router-outlet></router-outlet>
+</div>
+<app-as-error></app-as-error>

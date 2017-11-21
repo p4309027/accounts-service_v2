@@ -1,0 +1,23 @@
+<br>
+<div class="card" *ngFor = "let customer of customers; let i = index;">
+    <div class="card-header" [ngClass]="{'blue-header': customer.approved, 'warning-header': !customer.approved}">
+        <span *ngIf="customer.approved">Approved</span>
+        <span *ngIf="!customer.approved">Pending</span>
+    </div>
+    <div class="card-block">
+        <p class="card-text">Customer: {{customer.email}}</p>
+        <p class="card-text">Name: {{customer.firstName}}</p>
+        <p class="card-text">Role: {{customer.role}}</p>
+        <p class="card-text">Approved: 
+                <label class="checkbox-inline">
+                    <input  type="checkbox" 
+                            value={{customer.approved}} 
+                            (change)="handleChange($event,i)"
+                            [checked]="customer.approved">
+                </label>
+        </p>
+        <button class="btn btn-warning" type="submit" style="float: right" (click)="onUpdateStatus(customer)">Update</button>
+        <button class="btn btn-primary" type="submit" style="float: right;  margin-right:10px;" >Orders</button>
+        <button class="btn btn-primary" type="submit" style="float: right; margin-right:10px;" >Messages</button>        
+    </div>
+</div>

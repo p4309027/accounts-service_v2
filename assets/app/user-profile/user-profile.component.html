@@ -1,0 +1,68 @@
+<br>
+<div class="row">
+
+    <div class="col">
+        <h3>Update your details</h3>
+        <br>
+        <form [formGroup]="userProfileForm" (ngSubmit)="onUpdate()">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input
+                        type="text"
+                        id="firstName"
+                        class="form-control"
+                        formControlName="firstName"
+                        [ngModel]="currentUser.firstName">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input
+                        type="text"
+                        id="lastName"
+                        class="form-control"
+                        formControlName="lastName"
+                        [ngModel]="currentUser.lastName">
+            </div>
+            <div class="form-group">
+                <div class="hover">!
+                    <div class="tooltip">Username can't be changed</div>
+                </div>
+                <label for="email">Username</label>
+                <input
+                        type="email"
+                        id="email"
+                        class="form-control"
+                        formControlName="email"
+                        [ngModel]="currentUser.email"
+                        readonly>
+            </div>                
+            <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        formControlName="password">
+            </div>
+            <button
+                    class="btn btn-warning"
+                    style="float: right"
+                    type="submit"
+                    [disabled]="!userProfileForm.valid">Update</button>
+        </form>
+    </div>
+    
+    <div class="col" style="border-left: 1px solid rgba(0,0,0,.1);">
+        <div class="card">
+            <div class="card-header" [ngClass]="{'blue-header': currentUser.approved, 'warning-header': !currentUser.approved}">
+                Status is:
+                <span *ngIf="currentUser.approved">Approved</span>
+                <span *ngIf="!currentUser.approved">Pending</span>
+            </div>
+            <div class="card-block">
+                <p class="card-text">User: {{currentUser.email}}</p>
+            </div>    
+        </div>
+    </div>
+
+</div>

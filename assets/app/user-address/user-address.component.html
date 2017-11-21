@@ -1,0 +1,62 @@
+<br>
+<div class="row">
+    <div class="col">
+        <h3>Add your address</h3>
+        <br>
+        <form [formGroup]="addressForm" (ngSubmit)="onSaveAddress()">
+                <div class="form-group">
+                    <label for="houseNumber">House Number</label>
+                    <input
+                            type="text"
+                            id="houseNumber"
+                            class="form-control"
+                            formControlName="houseNumber">
+                </div>
+                <div class="form-group">
+                    <label for="street">Street Name</label>
+                    <input
+                            type="text"
+                            id="street"
+                            class="form-control"
+                            formControlName="street">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input
+                            type="text"
+                            id="city"
+                            class="form-control"
+                            formControlName="city">
+                </div>
+                <div class="form-group">
+                    <label for="postcode">Postcode</label>
+                    <input
+                            type="text"
+                            id="postcode"
+                            class="form-control"
+                            formControlName="postcode">
+                </div>
+                <button
+                        class="btn btn-primary"
+                        type="submit"
+                        style="float: right"
+                        [disabled]="!addressForm.valid">Save</button>
+            </form>
+    </div>
+    <div class="col" style="border-left: 1px solid rgba(0,0,0,.1);">
+        <div class="card" *ngFor="let address of addresses; let ind = index">
+            <div class="card-header blue-header">
+                <p style="padding: .5rem .75rem; margin-bottom:0;">Address {{ind+1}}</p>
+            </div>
+            <div class="card-block">
+                House: {{address?.houseNumber}}<br>
+                Street: {{address?.street}}<br>
+                City: {{address?.city}}<br>
+                Postcode: {{address?.postcode}}
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-danger config" (click)="onAddressDelete(address)">Delete</button>
+            </div>    
+        </div>
+    </div>
+</div>
