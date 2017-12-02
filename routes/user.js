@@ -1,3 +1,5 @@
+const util = require('util'); // -> tool to use console.log
+// console.log(util.inspect(x, false, null))
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
@@ -23,7 +25,7 @@ router.post('/register', function (req, res, next) {
                 error: err
             });
         }
-        res.status(201).json({
+        res.status(200).json({
             message: 'User created',
             obj: result
         });
@@ -84,6 +86,12 @@ router.patch('/user-profile', function(req, res, next){
             return res.json({
                 title: 'User is not found',
                 error: err
+            });
+        }
+        if (user === null) {
+            return res.status(400).json({
+                title: 'User is not found',
+                error: {message: 'Please try again'}
             });
         }
         if (user.email != decoded.user.email){

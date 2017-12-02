@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Http, Headers, Response } from "@angular/http";
 import 'rxjs/add/operator/map';
-import { Observable } from "rxjs";
+import { Observable, Subject} from "rxjs";
 import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 
 
@@ -12,8 +12,14 @@ import { AddressModel } from "./models/address.model";
 @Injectable()
 export class AppService {
     jwtHelper: JwtHelper = new JwtHelper();
+    //  RxJS Subject to allow the data to be multicasted to many Observers
+    dataForSharing:Subject<any> = new Subject();
 
     constructor(private http: Http) {}
+
+    shareData(data: string) {
+        this.dataForSharing.next(data);
+    }
 
     register(user: UserModel) {                
         const body = JSON.stringify(user);

@@ -24,6 +24,8 @@ export class LoginComponent {
                     // localStorage.setItem('userId', data.userId);
                     // localStorage.setItem('userRole', data.userRole);
                     
+                    this.appService.shareData(data.token);
+                    
                     // check if the user staff, if true go to /staff
                     if(this.appService.roleIs()){
                         this.router.navigate([ 'user-profile']);
