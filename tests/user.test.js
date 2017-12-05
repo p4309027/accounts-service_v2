@@ -5,7 +5,7 @@ const expect = require('expect');
 const request = require('supertest');
 var bcrypt = require('bcryptjs');
 var mongoose = require('mongoose');
-const www = require('../bin/www');
+var appConfig = require('../app-config.json');
 const app = require('../app');
 const userRoutes = require('../routes/user.js');
 
@@ -13,7 +13,7 @@ var User = require('../models/user');
 
 const {spyUsers, spyUsersToken, populateSpyUsers, stubUsers, stubUsersToken} = require('./doubles/doubles');
 
-mongoose.connect('mongodb://test:test@ds123926.mlab.com:23926/meantest', { useMongoClient: true });
+mongoose.connect(appConfig.testConnectionString, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 beforeEach(populateSpyUsers);
