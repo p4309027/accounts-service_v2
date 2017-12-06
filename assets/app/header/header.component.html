@@ -6,13 +6,16 @@
     </a>
       <ul class="navbar-nav navbar-right" style="flex-direction: row;">
         <li class="nav-item ">
-          <a href="http://localhost:3004/order/displayorders/?custoRef={{email}}" class="nav-link" >Orders</a>
+          <a href="http://3amigoso.azurewebsites.net/order/displayorders/?custoRef={{email}}" class="nav-link" >Orders</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" >Products</a>
+          <a href="http://3amigoss.azurewebsites.net/api/products" class="nav-link" >Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" >Messages</a>
+          <a class="nav-link" href="http://3amigosp.azurewebsites.net/purchasing">Purchases</a>
+        </li>
+        <li class="nav-item">
+          <a href="http://3amigosm.azurewebsites.net/message?custid={{email}}" class="nav-link" >Messages</a>
         </li>
                   
         <li class="nav-item" routerLinkActive="active" style="padding-right:0px"><a class="nav-link" [routerLink]="['login']">User</a></li>
